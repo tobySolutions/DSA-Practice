@@ -1,0 +1,31 @@
+public class Solution {
+    public int MaxArea(int[] height) {
+        int left = 0;
+        int right = height.Length - 1;
+        int maxH = 0;
+        
+        // since area = width * height
+        
+        //width = right - left
+        //height = min(height[left], height[right])
+        //use a while loop to calculate
+        //the goal is to have a higher height on our left && right
+        //Math.Min will check each for instance (1,8), (8,6), (5,3), each time, making the calculation then Math.Max will return the maximum number calculated out of all calculations
+        
+        while(left < right){
+            maxH = Math.Max(maxH, (right - left) * Math.Min(height[left], height[right]));
+            
+            if (height[left] < height[right])
+            {
+                left++;
+            }
+            else
+            {
+                right--;
+            }
+        }
+        
+        return maxH;
+        
+    }
+}
