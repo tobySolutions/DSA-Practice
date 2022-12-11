@@ -100,7 +100,7 @@ class HashMap {
         return true;
     }
 
-    // create a new HahsMap with doubled capacity
+    // create a new HashMap with doubled capacity when there are collisions
     rehash(newCapacity) {
         const newMap = new HashMap(newCapacity);
 
