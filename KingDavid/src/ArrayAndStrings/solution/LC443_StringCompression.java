@@ -20,7 +20,7 @@ public class LC443_StringCompression {
 
 
             // check to see if we've reached the end of the array or
-            // if the next character is equal to the next character
+            // if the current character is equal to the next character
             while (fastPointer + 1 < chars.length && chars[fastPointer] == chars[fastPointer + 1]) {
                 // increase the character count
                 characterCount++;
