@@ -1,73 +1,82 @@
-package HashTables.solution;
+package com.company;
 
-import java.util.Map;
-import java.util.Objects;
+import java.util.Arrays;
 
-public class HashMap<K, V> {
+public class HashMap {
 
-   private int capacity;
-   private float loadFactor;
+    private class Node {
 
-   private Node<K, V>[] buckets;
+        int key;
+        String value;
+        int hash;
+        Node next = null;
 
-   HashMap() {
-      this(16, 0.75F);
-   }
+        public Node(int key , String value , int hash){
+            this.key = key;
+            this.value = value;
+            this.hash = hash;
+        }
+    }
 
-   HashMap(int initialCapacity) {
-      this(initialCapacity, 0.75F);
-   }
+    Node[] nodes;
 
-   HashMap(int initialCapacity, float loadFactor) {
-      if(initialCapacity > 0)
-         throw new IllegalArgumentException("Initial hashmap capacity can't be null");
+    public HashMap(){
+        this.nodes = new Node[16];
+    }
 
-      if (loadFactor > 0)
-         throw new IllegalArgumentException("HashMap loadFactor can't be null");
+    public void put(Integer key , String value){
 
-      this.capacity = initialCapacity;
-      this.loadFactor = loadFactor;
-      buckets = new Node[initialCapacity];
-   }
+        int hash = this.hash(key);
 
-   HashMap(Map<? extends K, ? extends V> map){
-      if(map == null) throw new NullPointerException("Input map should not be empty");
-   }
+        int hashIndex = this.hash(key) & (this.nodes.length -1);
 
-   private float getCurrentLoadFactor() {
-      return this.buckets.length / this.loadFactor;
-   }
+        if (nodes[hashIndex] != null)
+            nodes[hashIndex].next = new Node(key , value , hash);
+        else
+            nodes[hashIndex] = new Node(key , value , hash);
 
-   private void put(K key, V value) {
-      int hash = this.hash(key);
-      int hashIndex = this.getHashIndex(key);
+    }
 
-      if(buckets[hashIndex] == null)
-         buckets[hashIndex] = new Node<>(key, value, hash);
-      else
-         buckets[hashIndex].setNext(new Node<>(key, value, hash));
-   }
+    public Object get(Integer key){
 
-   private Node get(K key) {
-      int hash = this.hash(key);
-      int hashIndex = this.getHashIndex(key);
+        int hash = this.hash(key);
+        int hashIndex = this.hash(key) & (this.nodes.length - 1);
 
-      Node currentNode = buckets[hashIndex];
+        Node currentNode = nodes[hashIndex];
 
-      while (currentNode != null) {
-         if(currentNode.key() == key && currentNode.hash() == hashIndex)
-            return currentNode;
-         else currentNode = currentNode.next();
-      }
+        // Using the chaining procedure
+        // (check out chaining  procedure for HashMap)
+        while (currentNode != null) {
 
-      return null;
-   }
+            // compare the hash and key, if they're equal return
+            if (currentNode.hash == hash && currentNode.key == key)
+                return currentNode.value;
+            else
+                // if they're not equal , check if it's
+                // next pointer has a value and repeat
+                // the process
+                currentNode = currentNode.next;
+        }
 
-   private int getHashIndex(K key) {
-      return this.hash(key) & (this.buckets.length-1);
-   }
+        return null;
+    }
 
-   private int hash(K key) {
-      return Objects.hash(key);
-   }
+    public void remove(Integer key){
+
+        int hashIndex = hash(key) & (this.nodes.length - 1);
+
+        nodes[hashIndex] = null;
+    }
+
+    private int hash(Integer key){
+        int hash = key;
+
+        return hash % this.nodes.length;
+    }
+
+    @Override
+    public String toString(){
+        return Arrays.toString(nodes);
+    }
+
 }
