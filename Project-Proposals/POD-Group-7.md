@@ -4,5 +4,5 @@
 Note App
  A note app where users can write notes, undo and redo previous changes.
 
-Tools this project will utilize:
-    * Stack or List or LinkedList
+Tools this project will utilize: <br>
+    - Stack or List or LinkedList
