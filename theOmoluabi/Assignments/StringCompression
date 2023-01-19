@@ -1,0 +1,26 @@
+public class Solution {
+    public int Compress(char[] chars) {
+        int indexAns = 0;
+        int currentIndex = 0;
+        
+        while (currentIndex < chars.Length){
+            char currentLetter = chars[currentIndex];
+            int count = 0;
+            
+            while (currentIndex < chars.Length && chars[currentIndex] == currentLetter ){
+                currentIndex++;
+                count++;
+            }
+            
+            chars[indexAns++] = currentLetter;
+            
+            if(count > 1){
+                foreach(var dig in count.ToString()){
+                    chars[indexAns++] = dig;
+                }
+            }
+        }
+        
+        return indexAns;
+    }
+}
