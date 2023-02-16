@@ -5,14 +5,14 @@
 
 
 ## Group Members
- Tobiloba Adedeji
- Samuel Bassey
- Noimot
- yinkatej
- Kingvic
- Kaydan3dO
- giovanni
- codex
+ - Tobiloba Adedeji
+ - Samuel Bassey
+ - Noimot
+ - yinkatej
+ - Kingvic
+ - Kaydan3dO
+ - giovanni
+ - codex
 <br>
 <br>
 
