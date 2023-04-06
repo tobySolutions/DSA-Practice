@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search engine stuff</title>
+    <title>Search engine app</title>
     <script type="module" src="index.js"></script>
     <script type="module" src="database.js"></script>
     <link rel="stylesheet" href="index.css" />
@@ -12,8 +12,10 @@
   <body>
     <div id="wrapper">
       <form>
-        <input type="text" placeholder="Search anything..." />
-        <button>Search</button>
+        <div class="searchInputWrapper">
+          <input class="input-search" type="text" placeholder="Type to search..." />
+          <button class="button">Search</button>
+        </div>       
       </form>
       <ul></ul>
     </div>
