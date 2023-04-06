@@ -8,14 +8,15 @@
 
 body {
   height: 100vh;
+  background-color: #f5f5f5;
 }
 
 form {
-    margin-bottom: 5em;
+  margin-bottom: 5em;
 }
 
 a:visited {
- color: black;
+  color: black;
 }
 
 #wrapper {
@@ -28,4 +29,33 @@ a:visited {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.searchInputWrapper {
+  width: 350px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  padding-left: 10px;
+  gap: 5px;
+  justify-items: center;
+}
+.searchInputWrapper > .input-search {
+  width: 70%;
+  height: 100%;
+  border: transparent;
+  padding: 10px;
+  outline: 0;
+  background-color: #ffffff;
+}
+
+
+
+.button {
+  width: 34%;
+  border: none;
+  background-color: #00d084;
+  cursor: pointer;
+  height: 100%;
+  color: #f5f5f5;
 }
