@@ -8,6 +8,8 @@ const p = document.createElement("p");
 
 form.addEventListener("submit", handleSearch);
 
+
+// O(N) SPACE || O(N) TIME
 function handleSearch(event) {
   event.preventDefault();
   list.innerHTML = "";
