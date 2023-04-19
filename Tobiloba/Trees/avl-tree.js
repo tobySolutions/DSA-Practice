@@ -98,7 +98,8 @@ class AVLTree {
 
   // insert a node
   insertNode(item) {
-    this.root = this.insertNodeHelper(this.root, item);
+      this.root = this.insertNodeHelper(this.root, item);
+      console.log(this.root);
   }
 
   // get node with minimum value
@@ -180,19 +181,30 @@ class AVLTree {
   }
 
   // preorder traversal
-  preorder() {
-    this.preorderHelper(this.root);
+  preOrder() {
+    this.preOrderHelper(this.root);
   }
 
   // preorder traversal helper function
-  preorderHelper(node) {
+  preOrderHelper(node) {
     if (node !== null) {
       console.log(node.item);
-      this.preorderHelper(node.left);
-      this.preorderHelper(node.right);
+      this.preOrderHelper(node.left);
+      this.preOrderHelper(node.right);
     }
   }
 }
+
+
+my_tree = new AVLTree(10);
+my_tree.insertNode(33);
+my_tree.insertNode(40);
+my_tree.insertNode(50);
+my_tree.insertNode(20);
+my_tree.preOrder();
+// my_tree.deleteNode(40)
+// console.log("After Deletion");
+// my_tree.preOrder();
 
 
 
